@@ -5,7 +5,6 @@ public class Player : MovingSprite
     private Vector2 _minPos, _maxPos;
     public Player(Texture2D tex) : base(tex, GetStartPosition())
     {
-
     }
 
     private static Vector2 GetStartPosition()

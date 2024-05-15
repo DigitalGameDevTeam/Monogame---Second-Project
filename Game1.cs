@@ -1,4 +1,10 @@
-﻿namespace Awesome_Game;
+﻿﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Awesome_Game;
 
 public class Game1 : Game
 {
@@ -25,7 +31,6 @@ public class Game1 : Game
 
         base.Initialize();
     }
-
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
