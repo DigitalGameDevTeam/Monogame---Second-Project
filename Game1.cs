@@ -19,9 +19,6 @@ public class Game1 : Game
         _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
         _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
         _graphics.ApplyChanges();
-        /*_graphics.PreferredBackBufferWidth = 1600;
-        _graphics.PreferredBackBufferHeight = 900;
-        _graphics.ApplyChanges();*/
 
         Globals.Content = Content;
         _gameManager = new();
