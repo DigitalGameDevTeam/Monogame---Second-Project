@@ -1,14 +1,17 @@
 using System.Data.Common;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Awesome_Game;
 
 public class GameManager
 {
+    private readonly Player _player;
+
     public GameManager()
     {
-        _player = new(Globals.Content.Load<Texture2D>("player"), new(200, 200));
+        _player = new(Globals.Content.Load<Texture2D>("playertexture"), new(200, 200));
     }
     public void Update()
     {
