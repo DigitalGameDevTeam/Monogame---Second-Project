@@ -1,3 +1,11 @@
-﻿
-using var game = new MyGame.Game1();
-game.Run();
+﻿namespace Awesome_Game;
+
+public static class Program
+{
+    [STAThread]
+    private static void Main()
+    {
+        using var game = new Game1();
+        game.Run();
+    }
+}

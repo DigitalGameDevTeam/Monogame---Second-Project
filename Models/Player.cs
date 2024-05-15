@@ -2,7 +2,7 @@ namespace Awesome_Game;
 
 public class Player : MovingSprite 
 {
-    public Player(Texture2D tex, Vector2 pos) : base(tex, GetStartPosition())
+    public Player(Texture2D tex) : base(tex, GetStartPosition())
     {
         // Call Reset
     }

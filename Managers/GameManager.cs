@@ -6,7 +6,7 @@ public class GameManager
 
     public GameManager()
     {
-        _player = new(Globals.Content.Load<Texture2D>("player"), new(200, 200));
+        _player = new(Globals.Content.Load<Texture2D>("player"));
     }
     public void Update()
     {

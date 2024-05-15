@@ -1,4 +1,4 @@
-﻿namespace MyGame;
+﻿namespace Awesome_Game;
 
 public class Game1 : Game
 {
