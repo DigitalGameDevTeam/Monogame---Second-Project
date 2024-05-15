@@ -1,7 +1,3 @@
-using System.Data.Common;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 namespace Awesome_Game;
 
 public class Sprite

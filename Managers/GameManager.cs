@@ -1,8 +1,3 @@
-using System.Data.Common;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
 namespace Awesome_Game;
 
 public class GameManager
