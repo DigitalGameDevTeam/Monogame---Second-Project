@@ -15,7 +15,7 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        Globals.Bounds = new(600, 600);
+        Globals.Bounds = new(1526, 900);
         _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
         _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
         _graphics.ApplyChanges();

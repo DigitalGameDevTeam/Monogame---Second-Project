@@ -12,7 +12,7 @@ namespace Awesome_Game
             _tiles = new Sprite[_mapTileSize.X, _mapTileSize.Y];
 
             // grass not working
-            Texture2D tileTexture = Globals.Content.Load<Texture2D>("player");
+            Texture2D tileTexture = Globals.Content.Load<Texture2D>("grass");
 
             TileSize = new(tileTexture.Width, tileTexture.Height);
             MapSize = new(TileSize.X * _mapTileSize.X, TileSize.Y * _mapTileSize.Y);
