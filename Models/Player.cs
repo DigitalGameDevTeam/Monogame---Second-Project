@@ -4,7 +4,7 @@ public class Player : MovingSprite
 {
     public Player(Texture2D tex) : base(tex, GetStartPosition())
     {
-        
+
     }
 
     private static Vector2 GetStartPosition()
@@ -36,10 +36,19 @@ public class Player : MovingSprite
 
         var toMouse = InputManager.MousePosition - Position;
         Rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
-        
-         if (InputManager.MouseClicked)
+
+        if (InputManager.MouseClicked)
         {
-            Fire();
+            MouseState mouseState = Mouse.GetState();
+            Point mousePosition = new(mouseState.X, mouseState.Y);
+            Point topLeft = new Point(0, 0);
+
+
+            if (mousePosition.X >= topLeft.X && mousePosition.X <= Globals.Bounds.X &&
+            mousePosition.Y >= topLeft.Y && mousePosition.Y <= Globals.Bounds.Y)
+            {
+                Fire();
+            }
         }
     }
-}
+}          
