@@ -34,21 +34,25 @@ public class Player : MovingSprite
             );
         }
 
-        var toMouse = InputManager.MousePosition - Position;
-        Rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
+        //registra a posiçao do ponteiro e a guarda no formato Point 
+        MouseState mouseState = Mouse.GetState();
+        Point mousePosition = new(mouseState.X, mouseState.Y);
+        //cria um ponto no canto superior esquerdo da tela
+        Point topLeft = new Point(0, 0);
 
-        if (InputManager.MouseClicked)
+        //verifica se o ponteiro está dentro da tela
+        if (mousePosition.X >= topLeft.X && mousePosition.X <= Globals.Bounds.X &&
+                   mousePosition.Y >= topLeft.Y && mousePosition.Y <= Globals.Bounds.Y)
         {
-            MouseState mouseState = Mouse.GetState();
-            Point mousePosition = new(mouseState.X, mouseState.Y);
-            Point topLeft = new Point(0, 0);
+            //atualiza a posição do ponteiro
+            var toMouse = InputManager.MousePosition - Position;
+            Rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
 
-
-            if (mousePosition.X >= topLeft.X && mousePosition.X <= Globals.Bounds.X &&
-            mousePosition.Y >= topLeft.Y && mousePosition.Y <= Globals.Bounds.Y)
+            if (InputManager.MouseClicked)
             {
+                //atira um projetil
                 Fire();
             }
         }
     }
-}          
+}
