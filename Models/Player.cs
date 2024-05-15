@@ -1,17 +1,28 @@
 namespace Awesome_Game;
 
-public class Player : MovingSprite 
+public class Player : MovingSprite
 {
     public Player(Texture2D tex) : base(tex, GetStartPosition())
     {
-        // Call Reset
+        
     }
 
     private static Vector2 GetStartPosition()
     {
         return new(Globals.Bounds.X / 2, Globals.Bounds.Y / 2);
     }
+    private void Fire()
+    {
+        ProjectileData pd = new()
+        {
+            Position = Position,
+            Rotation = Rotation,
+            Lifespan = 2,
+            Speed = 600
+        };
 
+        ProjectileManager.AddProjectile(pd);
+    }
     public void Update()
     {
         if (InputManager.Direction != Vector2.Zero)
@@ -25,5 +36,10 @@ public class Player : MovingSprite
 
         var toMouse = InputManager.MousePosition - Position;
         Rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
+        
+         if (InputManager.MouseClicked)
+        {
+            Fire();
+        }
     }
 }
