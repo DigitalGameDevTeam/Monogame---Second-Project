@@ -14,20 +14,20 @@ public class Game1 : Game
         IsMouseVisible = true;
     }
 
-protected override void Initialize()
-{
-    Globals.Bounds = new(1526, 900);
-    _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
-    _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
-    _graphics.ApplyChanges();
+    protected override void Initialize()
+    {
+        Globals.Bounds = new(1526, 900);
+        _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
+        _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
+        _graphics.ApplyChanges();
 
-    Globals.Content = Content;
-    _gameManager = new();
+        Globals.Content = Content;
+        _gameManager = new();
 
-    int initialKills = GameStats.Instance.Kills;
+        int initialKills = GameStats.Instance.Kills;
 
-    base.Initialize();
-}
+        base.Initialize();
+    }
 
     protected override void LoadContent()
     {
@@ -48,19 +48,21 @@ protected override void Initialize()
         base.Update(gameTime);
     }
 
-protected override void Draw(GameTime gameTime)
-{
-    GraphicsDevice.Clear(Color.Pink);
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.Pink);
 
-    _spriteBatch.Begin();
-    _gameManager.Draw();
+        _spriteBatch.Begin();
+        _gameManager.Draw();
 
-    _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
+        _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
 
-    _spriteBatch.End();
+        _spriteBatch.DrawString(font, "Ammo: " + _gameManager.Player.Ammo + " / " + _gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);
 
-    base.Draw(gameTime);
-}
+        _spriteBatch.End();
+
+        base.Draw(gameTime);
+    }
 
 
 
