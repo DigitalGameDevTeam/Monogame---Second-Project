@@ -109,7 +109,7 @@ public class Player : MovingSprite
                 //atira um projetil
                 Fire();
             }
-            if (InputManager.MouseRightClicked)
+            if (InputManager.KeyClicked_R)
             {
                 //recarrega a arma
                 Reload();
