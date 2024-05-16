@@ -8,6 +8,7 @@ public class GameManager
     {
         ProjectileManager.Init();
         _player = new(Globals.Content.Load<Texture2D>("player"));
+        Bot1Manager.Init();
         //_player.SetBounds(_map.MapSize, _map.TileSize);
     }
     /*private void CalculateTranslation()
@@ -21,6 +22,7 @@ public class GameManager
         InputManager.Update();
         _player.Update();
         //CalculateTranslation();
+        Bot1Manager.Update(_player);
         ProjectileManager.Update();
     }
     public void Draw()
@@ -28,6 +30,7 @@ public class GameManager
         //Globals.SpriteBatch.Begin(transformMatrix: _translation);
         _player.Draw();
         ProjectileManager.Draw();
+        Bot1Manager.Draw();
         //Globals.SpriteBatch.End();
     }
 }
