@@ -23,7 +23,7 @@ public class GameManager
         _player.Update();
         //CalculateTranslation();
         Bot1Manager.Update(_player);
-        ProjectileManager.Update();
+        ProjectileManager.Update(Bot1Manager.Bots1);
     }
     public void Draw()
     {

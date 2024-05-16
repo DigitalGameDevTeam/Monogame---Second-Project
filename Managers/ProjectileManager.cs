@@ -13,11 +13,21 @@ public static class ProjectileManager
     {
         Projectiles.Add(new(_texture, data));
     }
-    public static void Update()
+    public static void Update(List<Bot1> Bots1)
     {
         foreach (var p in Projectiles)
         {
             p.Update();
+            foreach (var z in Bots1)
+            {
+                if (z.HP <= 0) continue;
+                if ((p.Position - z.Position).Length() < 32)
+                {
+                    z.TakeDamage(1);
+                    p.CauseDamage();
+                    break;
+                }
+            }
         }
         Projectiles.RemoveAll((p) => p.Lifespan <= 0);
     }

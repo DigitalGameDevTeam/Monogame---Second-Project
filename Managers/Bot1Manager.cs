@@ -57,6 +57,7 @@ public static class Bot1Manager
         {
             z.Update(player);
         }
+        Bots1.RemoveAll((z) => z.HP <= 0);
     }
 
     public static void Draw()

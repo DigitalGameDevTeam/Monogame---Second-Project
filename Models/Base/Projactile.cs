@@ -12,7 +12,10 @@ public class Projectile : MovingSprite
         Direction = new((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
         Lifespan = data.Lifespan;
     }
-
+    public void CauseDamage()
+    {
+        Lifespan = 0;
+    }
     public void Update()
     {
         Position += Direction * Speed * Globals.TotalSeconds;

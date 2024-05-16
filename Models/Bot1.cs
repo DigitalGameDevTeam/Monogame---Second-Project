@@ -2,9 +2,16 @@ namespace Awesome_Game;
 
 public class Bot1 : MovingSprite
 {
- public Bot1(Texture2D tex, Vector2 pos) : base(tex, pos)
+    public int HP { get; private set; }
+    public Bot1(Texture2D tex, Vector2 pos) : base(tex, pos)
     {
         Speed = 100;
+        HP = 1;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        HP -= damage;
     }
 
     public void Update(Player player)
