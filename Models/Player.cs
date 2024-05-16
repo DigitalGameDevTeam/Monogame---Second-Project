@@ -3,22 +3,54 @@ namespace Awesome_Game;
 public class Player : MovingSprite
 {
     private Vector2 _minPos, _maxPos;
+    private readonly float cooldown;
+    private float cooldownLeft;
+    public readonly int maxAmmo;
+    public int Ammo { get; private set; }
+    public readonly float reloadTime;
+    public bool isReloading { get; private set; }
+
     public Player(Texture2D tex) : base(tex, GetStartPosition())
     {
+        cooldown = 0.25f;
+        cooldownLeft = 0f;
+        maxAmmo = 20;
+        Ammo = maxAmmo;
+        reloadTime = 2f;
+        isReloading = false;
     }
 
+    private void Reload()
+    {
+        if (isReloading) return;
+        cooldownLeft = reloadTime;
+        isReloading = true;
+        Ammo = maxAmmo;
+    }
     private static Vector2 GetStartPosition()
     {
         return new(Globals.Bounds.X / 2, Globals.Bounds.Y / 2);
     }
+
     private void Fire()
     {
+        if (cooldownLeft > 0 || isReloading) return;
+        Ammo--;
+        if (Ammo > 0)
+        {
+            cooldownLeft = cooldown;
+        }
+        else
+        {
+            Reload();
+        }
+
         ProjectileData pd = new()
         {
             Position = Position,
             Rotation = Rotation,
             Lifespan = 2,
-            Speed = 4000
+            Speed = 1000
         };
 
         ProjectileManager.AddProjectile(pd);
@@ -32,6 +64,15 @@ public class Player : MovingSprite
 
     public void Update()
     {
+        if (cooldownLeft > 0)
+        {
+            cooldownLeft -= Globals.TotalSeconds;
+        }
+        else if (isReloading)
+        {
+            isReloading = false;
+        }
+
         if (InputManager.Direction != Vector2.Zero)
         {
             var dir = Vector2.Normalize(InputManager.Direction);
@@ -55,10 +96,15 @@ public class Player : MovingSprite
             var toMouse = InputManager.MousePosition - Position;
             Rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
 
-            if (InputManager.MouseClicked)
+            if (InputManager.MouseLeftDown)
             {
                 //atira um projetil
                 Fire();
+            }
+            if (InputManager.MouseRightClicked)
+            {
+                //recarrega a arma
+                Reload();
             }
         }
     }

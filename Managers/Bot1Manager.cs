@@ -2,7 +2,6 @@ namespace Awesome_Game;
 
 public static class Bot1Manager
 {
-
     public static List<Bot1> Bots1 { get; } = new();
     private static Texture2D _texture;
     private static float _spawnCooldown;

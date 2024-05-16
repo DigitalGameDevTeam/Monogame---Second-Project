@@ -1,19 +1,10 @@
-﻿﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System.Collections.Generic;
-using System.IO;
-
-namespace Awesome_Game;
+﻿﻿namespace Awesome_Game;
 
 public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private GameManager _gameManager;
-
-    private GameStats _gameStats;
-
     private SpriteFont font;
 
     public Game1()
