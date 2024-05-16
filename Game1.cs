@@ -58,7 +58,11 @@ public class Game1 : Game
         _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
 
         _spriteBatch.DrawString(font, "Ammo: " + _gameManager.Player.Ammo + " / " + _gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);
-
+        
+        if (_gameManager.Player.isReloading)
+        {
+            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(653, 700), Color.Black);
+        }
         _spriteBatch.End();
 
         base.Draw(gameTime);
