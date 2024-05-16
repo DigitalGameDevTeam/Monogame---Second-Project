@@ -50,7 +50,7 @@ public class Game1 : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.DimGray);
+        GraphicsDevice.Clear(Color.Pink);
 
         _spriteBatch.Begin();
         _gameManager.Draw();

@@ -18,7 +18,7 @@ public class Player : MovingSprite
             Position = Position,
             Rotation = Rotation,
             Lifespan = 2,
-            Speed = 600
+            Speed = 4000
         };
 
         ProjectileManager.AddProjectile(pd);
