@@ -12,6 +12,10 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     private GameManager _gameManager;
 
+    private GameStats _gameStats;
+
+    private SpriteFont font;
+
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -19,22 +23,27 @@ public class Game1 : Game
         IsMouseVisible = true;
     }
 
-    protected override void Initialize()
-    {
-        Globals.Bounds = new(1526, 900);
-        _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
-        _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
-        _graphics.ApplyChanges();
+protected override void Initialize()
+{
+    Globals.Bounds = new(1526, 900);
+    _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
+    _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
+    _graphics.ApplyChanges();
 
-        Globals.Content = Content;
-        _gameManager = new();
+    Globals.Content = Content;
+    _gameManager = new();
 
-        base.Initialize();
-    }
+    int initialKills = GameStats.Instance.Kills;
+
+    base.Initialize();
+}
+
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         Globals.SpriteBatch = _spriteBatch;
+
+        font = Content.Load<SpriteFont>("Fonts/arial");
     }
 
     protected override void Update(GameTime gameTime)
@@ -48,14 +57,21 @@ public class Game1 : Game
         base.Update(gameTime);
     }
 
-    protected override void Draw(GameTime gameTime)
-    {
-        GraphicsDevice.Clear(Color.Pink);
+protected override void Draw(GameTime gameTime)
+{
+    GraphicsDevice.Clear(Color.Pink);
 
-        _spriteBatch.Begin();
-        _gameManager.Draw();
-        _spriteBatch.End();
+    _spriteBatch.Begin();
+    _gameManager.Draw();
 
-        base.Draw(gameTime);
-    }
+    _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
+
+    _spriteBatch.End();
+
+    base.Draw(gameTime);
+}
+
+
+
+
 }

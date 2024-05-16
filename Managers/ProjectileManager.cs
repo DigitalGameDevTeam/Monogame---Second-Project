@@ -1,5 +1,3 @@
-namespace Awesome_Game;
-
 public static class ProjectileManager
 {
     private static Texture2D _texture;
@@ -9,10 +7,12 @@ public static class ProjectileManager
     {
         _texture = Globals.Content.Load<Texture2D>("bullet");
     }
+
     public static void AddProjectile(ProjectileData data)
     {
-        Projectiles.Add(new(_texture, data));
+        Projectiles.Add(new Projectile(_texture, data)); // No need to pass GameStats instance here
     }
+
     public static void Update(List<Bot1> Bots1)
     {
         foreach (var p in Projectiles)
@@ -31,6 +31,7 @@ public static class ProjectileManager
         }
         Projectiles.RemoveAll((p) => p.Lifespan <= 0);
     }
+
     public static void Draw()
     {
         foreach (var p in Projectiles)
@@ -38,6 +39,4 @@ public static class ProjectileManager
             p.Draw();
         }
     }
-
-
 }
