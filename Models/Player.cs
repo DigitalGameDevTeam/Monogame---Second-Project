@@ -14,7 +14,7 @@ public class Player : MovingSprite
     {
         cooldown = 0.25f;
         cooldownLeft = 0f;
-        maxAmmo = 20;
+        maxAmmo = 5;
         Ammo = maxAmmo;
         reloadTime = 2f;
         isReloading = false;
