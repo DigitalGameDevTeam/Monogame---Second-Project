@@ -9,6 +9,7 @@ public class Player : MovingSprite
     public int Ammo { get; private set; }
     public readonly float reloadTime;
     public bool isReloading { get; private set; }
+    public float reloadTimeLeft;
 
     public Player(Texture2D tex) : base(tex, GetStartPosition())
     {
@@ -18,6 +19,7 @@ public class Player : MovingSprite
         Ammo = maxAmmo;
         reloadTime = 2f;
         isReloading = false;
+        reloadTimeLeft = 0f;
     }
 
     private void Reload()
@@ -25,7 +27,7 @@ public class Player : MovingSprite
         if (isReloading) return;
         cooldownLeft = reloadTime;
         isReloading = true;
-        Ammo = maxAmmo;
+        Ammo = 0; //iguala a 0 para que durante o tempo de Reload o Visual Ui mostre 0
     }
     private static Vector2 GetStartPosition()
     {
@@ -70,7 +72,13 @@ public class Player : MovingSprite
         }
         else if (isReloading)
         {
-            isReloading = false;
+            reloadTimeLeft += Globals.TotalSeconds;
+            if (reloadTimeLeft >= 0) //verifica se o tempo de reload acabou
+            {
+                Ammo = maxAmmo;
+                isReloading = false;
+            }
+            
         }
 
         if (InputManager.Direction != Vector2.Zero)
