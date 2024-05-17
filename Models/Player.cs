@@ -15,6 +15,13 @@ public class Player : Sprite
 
     public Player(Texture2D texture) : base(texture, GetStartPosition())
     {
+        cooldown = 0.25f;
+        cooldownLeft = 0f;
+        maxAmmo = 20;
+        Ammo = maxAmmo;
+        reloadTime = 2f;
+        isReloading = false;
+        reloadTimeLeft = 0f;
         FramesPerSecond = 10;
     }
     public Rectangle playerRectangle;
@@ -23,13 +30,6 @@ public class Player : Sprite
     {
         sTexture = Globals.Content.Load<Texture2D>("player");
         AddAnimation(6);
-        cooldown = 0.25f;
-        cooldownLeft = 0f;
-        maxAmmo = 20;
-        Ammo = maxAmmo;
-        reloadTime = 2f;
-        isReloading = false;
-        reloadTimeLeft = 0f;
     }
 
     private void Reload()
