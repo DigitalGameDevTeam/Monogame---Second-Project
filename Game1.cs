@@ -93,6 +93,7 @@ protected override void Initialize()
         if (gameOver)
         {
             _spriteBatch.DrawString(font, "Perdeu", new Vector2(Globals.Bounds.X / 2-80, Globals.Bounds.Y / 2), Color.Red);
+            resetButton.Draw(_spriteBatch);
         }
 
         if (gameManager.Player.isReloading)
