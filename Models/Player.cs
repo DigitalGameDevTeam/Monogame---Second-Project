@@ -123,10 +123,15 @@ public class Player : Sprite
             toMouse = InputManager.MousePosition - Position;
             Rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
 
-            if (InputManager.MouseLeftDown)
+            if (InputManager.MouseLeftDown) //verifica se o botão esquerdo do rato foi pressionado
             {
                 //atira um projetil
                 Fire();
+            }
+            if (InputManager.KeyClicked_R) //verifica se a tecla R foi pressionada
+            {
+                //recarrega a arma
+                Reload();
             }
         }
 
