@@ -1,4 +1,4 @@
-namespace Awesome_Game;
+﻿namespace Awesome_Game;
 
 public class Game1 : Game
 {
@@ -85,18 +85,19 @@ protected override void Initialize()
         gameManager.Draw(gameTime);
 
         _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
-        _spriteBatch.DrawString(font, "Ammo: " + gameManager.Player.Ammo + " / " + gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);  
-        _spriteBatch.DrawString(font, "HP: " + gameManager.Player.Hp, new Vector2(5, 110), Color.Black);
+
+        _spriteBatch.DrawString(font, "Ammo: " + gameManager.Player.Ammo + " / " + gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);
+        
+        _spriteBatch.DrawString(font, "HP: " + gameManager.Player.Hp, new Vector2(10, 110), Color.Black);
 
         if (gameOver)
         {
-            _spriteBatch.DrawString(font, "Perdeu", new Vector2(Globals.Bounds.X / 2, Globals.Bounds.Y / 2), Color.Red);
-            resetButton.Draw(_spriteBatch);        
+            _spriteBatch.DrawString(font, "Perdeu", new Vector2(Globals.Bounds.X / 2-80, Globals.Bounds.Y / 2), Color.Red);
         }
 
         if (gameManager.Player.isReloading)
         {
-            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(320, 60), Color.Black);
+            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(Globals.Bounds.X/2-110,  2*Globals.Bounds.Y/3), Color.Black);
         }
 
         _spriteBatch.End();
