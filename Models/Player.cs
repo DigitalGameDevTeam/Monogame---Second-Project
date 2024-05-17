@@ -4,7 +4,7 @@ public class Player : Sprite
 {
     private Vector2 _minPos, _maxPos;
     public int playerSpeed { get; set; } = 300;
-    public float Rotation { get; set; }
+    public int Hp { get; private set; } = 100;
     private readonly float cooldown;
     private float cooldownLeft;
     public readonly int maxAmmo;
@@ -30,6 +30,16 @@ public class Player : Sprite
     {
         sTexture = Globals.Content.Load<Texture2D>("player");
         AddAnimation(6);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Hp -= damage;
+        if (Hp <= 0)
+        {
+            Hp = 0;
+            Game1.Instance.GameOver();
+        }
     }
 
     private void Reload()
@@ -91,6 +101,7 @@ public class Player : Sprite
             {
                 Ammo = maxAmmo;
                 isReloading = false;
+                reloadTimeLeft = 0;
             }
             
         }

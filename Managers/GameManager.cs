@@ -7,12 +7,11 @@ public class GameManager
 
     ContentManager content;
     SpriteBatch spriteBatch;
-
+    
     public GameManager(GraphicsDevice graphicsDevice)
     {
         ProjectileManager.Init();
         spriteBatch = new SpriteBatch(graphicsDevice);
-
 
         _player = new(Globals.Content.Load<Texture2D>("player"));
         _player.LoadContent(content);
