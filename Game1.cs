@@ -1,4 +1,4 @@
-﻿﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -12,9 +12,6 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private GameManager _gameManager;
-
-    private GameStats _gameStats;
-
     private SpriteFont font;
 
     public Game1()
@@ -34,10 +31,10 @@ protected override void Initialize()
     Globals.Content = Content;
     _gameManager = new(GraphicsDevice);
 
-    int initialKills = GameStats.Instance.Kills;
+        int initialKills = GameStats.Instance.Kills;
 
-    base.Initialize();
-}
+        base.Initialize();
+    }
 
     protected override void LoadContent()
     {
@@ -58,19 +55,25 @@ protected override void Initialize()
         base.Update(gameTime);
     }
 
-protected override void Draw(GameTime gameTime)
-{
-    GraphicsDevice.Clear(Color.Pink);
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.Pink);
 
     _spriteBatch.Begin();
     _gameManager.Draw(gameTime);
 
-    _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
+        _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
 
-    _spriteBatch.End();
+        _spriteBatch.DrawString(font, "Ammo: " + _gameManager.Player.Ammo + " / " + _gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);
+        
+        if (_gameManager.Player.isReloading)
+        {
+            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(653, 700), Color.Black);
+        }
+        _spriteBatch.End();
 
-    base.Draw(gameTime);
-}
+        base.Draw(gameTime);
+    }
 
 
 

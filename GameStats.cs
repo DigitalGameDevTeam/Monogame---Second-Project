@@ -1,6 +1,7 @@
 public class GameStats
 {
     private static GameStats _instance;
+    public  Player Player { get; set; }
     public static GameStats Instance
     {
         get

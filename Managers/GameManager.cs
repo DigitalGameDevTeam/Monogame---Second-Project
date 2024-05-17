@@ -3,6 +3,7 @@ namespace Awesome_Game;
 public class GameManager
 {
     private readonly Player _player;
+    public Player Player => _player;
 
     ContentManager content;
     SpriteBatch spriteBatch;
