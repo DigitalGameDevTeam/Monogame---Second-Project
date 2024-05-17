@@ -10,6 +10,7 @@ public static class Bot1Manager
     private static Random _random;
     private static int _padding;
 
+
     public static void Init()
     {
         _texture = Globals.Content.Load<Texture2D>("bot1");

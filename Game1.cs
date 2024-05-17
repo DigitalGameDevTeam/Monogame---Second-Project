@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 
 namespace Awesome_Game;
@@ -25,13 +26,13 @@ public class Game1 : Game
 
 protected override void Initialize()
 {
-    Globals.Bounds = new(1526, 900);
+    Globals.Bounds = new(900, 700);
     _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
     _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
     _graphics.ApplyChanges();
 
     Globals.Content = Content;
-    _gameManager = new();
+    _gameManager = new(GraphicsDevice);
 
     int initialKills = GameStats.Instance.Kills;
 
@@ -52,7 +53,7 @@ protected override void Initialize()
             Exit();
 
         Globals.Update(gameTime);
-        _gameManager.Update();
+        _gameManager.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -62,7 +63,7 @@ protected override void Draw(GameTime gameTime)
     GraphicsDevice.Clear(Color.Pink);
 
     _spriteBatch.Begin();
-    _gameManager.Draw();
+    _gameManager.Draw(gameTime);
 
     _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
 
