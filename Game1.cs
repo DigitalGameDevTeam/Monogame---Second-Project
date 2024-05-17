@@ -7,7 +7,10 @@ public class Game1 : Game
     private GameManager gameManager;
     private SpriteFont font;
     private bool gameOver = false;
-    private float gameOverTime = 0f;
+    private Button resetButton;
+    private Texture2D buttonTexture;
+    //private float gameOverTime = 0f;
+    private MouseState previousMouseState;
     public static Game1 Instance { get; private set; }
     public Game1()
     {
@@ -27,9 +30,9 @@ protected override void Initialize()
     Globals.Content = Content;
     gameManager = new GameManager(GraphicsDevice);
 
-        int initialKills = GameStats.Instance.Kills;
+    int initialKills = GameStats.Instance.Kills;
 
-        base.Initialize();
+    base.Initialize();
     }
 
     protected override void LoadContent()
@@ -38,6 +41,8 @@ protected override void Initialize()
         Globals.SpriteBatch = _spriteBatch;
 
         font = Content.Load<SpriteFont>("Fonts/arial");
+        buttonTexture = Content.Load<Texture2D>("resetButton");
+        resetButton = new Button(buttonTexture, new Vector2(Globals.Bounds.X / 2 - buttonTexture.Width / 2, Globals.Bounds.Y / 2 + 50));
     }
 
     protected override void Update(GameTime gameTime)
@@ -45,13 +50,24 @@ protected override void Initialize()
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
+        MouseState mouseState = Mouse.GetState();
+
          if (gameOver)
         {
-            gameOverTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            /*gameOverTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (gameOverTime >= 5f)
             {
                 ResetGame();
+            }*/
+
+            resetButton.Update(mouseState);
+
+            if (resetButton.IsClicked && previousMouseState.LeftButton == ButtonState.Released)
+            {
+                ResetGame();
             }
+            
+            previousMouseState = mouseState;
             return;
         }
 
@@ -69,14 +85,13 @@ protected override void Initialize()
         gameManager.Draw(gameTime);
 
         _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
-
-        _spriteBatch.DrawString(font, "Ammo: " + gameManager.Player.Ammo + " / " + gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);
-        
+        _spriteBatch.DrawString(font, "Ammo: " + gameManager.Player.Ammo + " / " + gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);  
         _spriteBatch.DrawString(font, "HP: " + gameManager.Player.Hp, new Vector2(5, 110), Color.Black);
 
         if (gameOver)
         {
             _spriteBatch.DrawString(font, "Perdeu", new Vector2(Globals.Bounds.X / 2, Globals.Bounds.Y / 2), Color.Red);
+            resetButton.Draw(_spriteBatch);        
         }
 
         if (gameManager.Player.isReloading)
@@ -92,13 +107,13 @@ protected override void Initialize()
     public void GameOver()
     {
         gameOver = true;
-        gameOverTime = 0f;
+        //gameOverTime = 0f;
     }
 
     private void ResetGame()
     {
         gameOver = false;
-        gameOverTime = 0f;
+        //gameOverTime = 0f;
         gameManager = new GameManager(GraphicsDevice);
     }
 }
