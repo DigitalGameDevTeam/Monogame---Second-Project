@@ -44,6 +44,7 @@ public class Player : Sprite
 
     private void Reload()
     {
+        SoundManager.Instance.PlayPlayerReload();
         if (isReloading) return;
         cooldownLeft = reloadTime;
         isReloading = true;
@@ -60,6 +61,7 @@ public class Player : Sprite
         Ammo--;
         if (Ammo > 0)
         {
+            SoundManager.Instance.PlayPlayerShoot();
             cooldownLeft = cooldown;
         }
         else
