@@ -39,7 +39,7 @@ public class SoundManager
 
     public void PlayBackgroundMusic()
     {
-        MediaPlayer.Volume = 0.05f;
+        MediaPlayer.Volume = 0.1f;
         MediaPlayer.IsRepeating = true;
         MediaPlayer.Play(backgroundMusic);
     }

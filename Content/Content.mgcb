@@ -83,7 +83,7 @@
 #begin Sounds/background.wav
 /importer:WavImporter
 /processor:SongProcessor
-/processorParam:Quality=Medium
+/processorParam:Quality=Best
 /build:Sounds/background.wav
 
 #begin Sounds/shoot_reload.wav
