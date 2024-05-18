@@ -24,5 +24,11 @@ public class Bot1 : MovingSprite
             var dir = Vector2.Normalize(toPlayer);
             Position += dir * Speed * Globals.TotalSeconds;
         }
+
+        if (toPlayer.Length() < 32)
+        {
+            player.TakeDamage(10);
+            HP = 0;
+        }
     }
 }

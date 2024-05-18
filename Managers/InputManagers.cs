@@ -7,7 +7,6 @@ public static class InputManager
     private static Vector2 _direction;
     public static Vector2 Direction => _direction;
     public static Vector2 MousePosition => Mouse.GetState().Position.ToVector2();
-    public static bool MouseRightClicked { get; private set; }
     public static bool MouseLeftDown { get; private set; }
     public static bool MouseClicked { get; private set; }
 
@@ -26,10 +25,8 @@ public static class InputManager
 
         MouseLeftDown = mouseState.LeftButton == ButtonState.Pressed;
         MouseClicked = MouseLeftDown && (_lastMouseState.LeftButton == ButtonState.Released);
-        MouseRightClicked = mouseState.RightButton == ButtonState.Pressed
-                            && (_lastMouseState.RightButton == ButtonState.Released);
 
-        KeyClicked_R = _lastKeyboardState.IsKeyUp(Keys.Space) && keyboardState.IsKeyDown(Keys.Space);
+        KeyClicked_R = _lastKeyboardState.IsKeyUp(Keys.R) && keyboardState.IsKeyDown(Keys.R);
 
         _lastMouseState = mouseState;
         _lastKeyboardState = keyboardState;
