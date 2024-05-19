@@ -105,7 +105,7 @@ public class Game1 : Game
 
         if (gameManager.Player.isReloading)
         {
-            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(Globals.Bounds.X / 2, 2 * Globals.Bounds.Y / 2), Color.Black);
+            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(Globals.Bounds.X / 2 - 40, 2 * Globals.Bounds.Y / 3 - 120), Color.Black);
         }
 
         _spriteBatch.End();
@@ -117,6 +117,7 @@ public class Game1 : Game
     {
         gameOver = true;
         GameStats.Instance.UpdateHighScore();
+        GameStats.Instance.Kills = 0;   
 
         //gameOverTime = 0f;
     }
