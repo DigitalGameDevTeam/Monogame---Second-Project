@@ -1,7 +1,7 @@
 #OS junk files
 [Tt]humbs.db
 *.DS_Store
-highscore.txt
+*.txt
 #Visual Studio files
 *.pidb
 *.userprefs
