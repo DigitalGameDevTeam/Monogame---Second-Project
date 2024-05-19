@@ -117,6 +117,7 @@ public class Game1 : Game
     {
         gameOver = true;
         GameStats.Instance.UpdateHighScore();
+        GameStats.Instance.Kills = 0;   
 
         //gameOverTime = 0f;
     }

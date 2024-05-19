@@ -31,6 +31,11 @@ public class GameStats
         {
             HighScore = Kills;
             SaveHighScore(); // Save high score if it's updated
+            Kills = 0; // Reset kills if high score is updated
+        }
+        else
+        {
+            Kills = 0; // Reset kills if high score is not updated
         }
     }
 
