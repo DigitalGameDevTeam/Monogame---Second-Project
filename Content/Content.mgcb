@@ -80,3 +80,21 @@
 /processorParam:TextureFormat=Color
 /build:resetButton.png
 
+#begin Sounds/background.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/background.wav
+
+#begin Sounds/shoot_reload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/shoot_reload.wav
+
+#begin Sounds/shoot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/shoot.wav
+

@@ -6,3 +6,5 @@ global using Microsoft.Xna.Framework.Graphics;
 global using Microsoft.Xna.Framework.Content;
 global using System.Collections.Generic;
 global using System.Reflection.Metadata;
+global using Microsoft.Xna.Framework.Audio;
+global using Microsoft.Xna.Framework.Media;
