@@ -5,7 +5,6 @@ public class Game1 : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private GameManager gameManager;
-
     private SpriteFont font;
     private bool gameOver = false;
     private Button resetButton;
@@ -30,9 +29,11 @@ public class Game1 : Game
         _graphics.ApplyChanges();
 
         Globals.Content = Content;
+
         gameManager = new GameManager(GraphicsDevice);
 
         int initialKills = GameStats.Instance.Kills;
+
 
         base.Initialize();
     }
@@ -78,6 +79,7 @@ public class Game1 : Game
 
         Globals.Update(gameTime);
         gameManager.Update(gameTime);
+        LevelManager.Instance.GetHarder();
 
         base.Update(gameTime);
     }
@@ -89,9 +91,7 @@ public class Game1 : Game
         _spriteBatch.Begin();
         gameManager.Draw(gameTime);
 
-        _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills, new Vector2(10, 10), Color.Black);
-
-        _spriteBatch.DrawString(font, " - - High Score: " + GameStats.Instance.HighScore, new Vector2(200, 10), Color.Black);
+        _spriteBatch.DrawString(font, "Kill Count: " + GameStats.Instance.Kills + " - - High Score: " + GameStats.Instance.HighScore, new Vector2(10, 10), Color.Black);
 
         _spriteBatch.DrawString(font, "Ammo: " + gameManager.Player.Ammo + " / " + gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);
 
@@ -105,7 +105,7 @@ public class Game1 : Game
 
         if (gameManager.Player.isReloading)
         {
-            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(Globals.Bounds.X / 2 - 80, 2 * Globals.Bounds.Y / 3+60), Color.Black);
+            _spriteBatch.DrawString(font, "Reloading ...", new Vector2(Globals.Bounds.X / 2 - 80, 2 * Globals.Bounds.Y / 3 + 60), Color.Black);
         }
 
         _spriteBatch.End();
@@ -117,7 +117,8 @@ public class Game1 : Game
     {
         gameOver = true;
         GameStats.Instance.UpdateHighScore();
-        GameStats.Instance.Kills = 0;   
+        GameStats.Instance.Kills = 0;
+        LevelManager.Instance.Load();
 
         //gameOverTime = 0f;
     }
@@ -127,5 +128,6 @@ public class Game1 : Game
         gameOver = false;
         //gameOverTime = 0f;
         gameManager = new GameManager(GraphicsDevice);
+        Bot1Manager.Bots1.Clear();
     }
 }

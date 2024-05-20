@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace Awesome_Game;
 
 public static class Bot1Manager
@@ -14,7 +16,7 @@ public static class Bot1Manager
     {
         _texture = Globals.Content.Load<Texture2D>("bot1");
         //limitador de spawn do bot1
-        _spawnCooldown = 1f;
+        _spawnCooldown = LevelManager.Instance.bot1_SpawnRate;
         _spawnTime = _spawnCooldown;
         _random = new();
         _padding = _texture.Width / 2;

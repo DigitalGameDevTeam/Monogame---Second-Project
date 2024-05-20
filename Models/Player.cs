@@ -105,7 +105,7 @@ public class Player : Sprite
                 isReloading = false;
                 reloadTimeLeft = 0;
             }
-            
+
         }
 
         //registra a posiçao do psonteiro e a guarda no formato Point 

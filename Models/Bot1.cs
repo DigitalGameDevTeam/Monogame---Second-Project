@@ -5,8 +5,8 @@ public class Bot1 : MovingSprite
     public int HP { get; private set; }
     public Bot1(Texture2D tex, Vector2 pos) : base(tex, pos)
     {
-        Speed = 100;
-        HP = 1;
+        Speed = LevelManager.Instance.bot1_MovementSpeed;
+        HP = LevelManager.Instance.bot1_HP;
     }
 
     public void TakeDamage(int damage)

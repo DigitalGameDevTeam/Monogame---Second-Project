@@ -18,7 +18,7 @@ public class SoundManager
     private SoundEffect playerShoot;
     private SoundEffect playerReload;
     private Song backgroundMusic;
-    private float effectVolume = 0.05f;
+    private float effectVolume = 0.1f;
 
     private SoundManager()
     {
