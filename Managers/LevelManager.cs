@@ -23,7 +23,7 @@ public class LevelManager
     public int bot1_HP_Gap = 1;
     public int bot1_MovementSpeed_Gap = 50;
     public float bot1_SpawnRate_Gap = 0.5f;
-    public int level_Gap = 5;
+    public int level_Gap = 15;
 
     public LevelManager()
     {
@@ -38,7 +38,7 @@ public class LevelManager
         bot1_HP += bot1_HP_Gap;
         bot1_MovementSpeed += bot1_MovementSpeed_Gap;
         bot1_SpawnRate -= bot1_SpawnRate_Gap;
-        level_Gap += 5;
+        level_Gap += 15;
         }
     }
 
