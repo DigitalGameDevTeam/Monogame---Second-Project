@@ -12,15 +12,12 @@ namespace Awesome_Game
 
         public static void Init()
         {
-            /*_texture = Globals.Content.Load<Texture2D>("bot1");*/
-
             textures = new List<Texture2D>
             {
                 Globals.Content.Load<Texture2D>("bot2"),
                 Globals.Content.Load<Texture2D>("bot3")
 
             };
-
 
             _spawnCooldown = LevelManager.Instance.bot1_SpawnRate;
             _spawnTime = _spawnCooldown;
@@ -50,7 +47,9 @@ namespace Awesome_Game
 
         public static void AddBot()
         {
-            Bots1.Add(new Bot1(textures, RandomPosition()));
+            var bot = new Bot1(textures, RandomPosition());
+            bot.LoadContent(Globals.Content);
+            Bots1.Add(bot);
         }
 
         public static void Update(Player player, GameTime gameTime)

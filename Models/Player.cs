@@ -2,7 +2,7 @@ namespace Awesome_Game;
 
 public class Player : Sprite
 {
-    private Vector2 _minPos, _maxPos;
+    private Vector2 minPos, maxPos;
     public int playerSpeed { get; set; } = 300;
     public int Hp { get; private set; } = 100;
     private readonly float cooldown;
@@ -84,8 +84,8 @@ public class Player : Sprite
 
     public void SetBounds(Point mapSize, Point tileSize)
     {
-        _minPos = new((-tileSize.X / 2) + origin.X, (-tileSize.Y / 2) + origin.Y);
-        _maxPos = new(mapSize.X - (tileSize.X / 2) - origin.X, mapSize.Y - (tileSize.X / 2) - origin.Y);
+        minPos = new((-tileSize.X / 2) + origin.X, (-tileSize.Y / 2) + origin.Y);
+        maxPos = new(mapSize.X - (tileSize.X / 2) - origin.X, mapSize.Y - (tileSize.X / 2) - origin.Y);
     }
 
     public void Update(GameTime gameTime)

@@ -5,8 +5,10 @@ namespace Awesome_Game
     public class Bot1 : AnimatedSprite
     {
         public int HP { get; private set; }
+        public float maxHP { get; private set; }
         public int Speed { get; set; }
         private List<Texture2D> textures;
+        public Texture2D healthBarTexture;
         private int currentTextureIndex;
 
         public Bot1(List<Texture2D> tex, Vector2 pos) : base(pos)
@@ -16,6 +18,7 @@ namespace Awesome_Game
             sTexture = textures[currentTextureIndex];
             Speed = LevelManager.Instance.bot1_MovementSpeed;
             HP = LevelManager.Instance.bot1_HP;
+            maxHP = HP;
             FramesPerSecond = 10;
             AddAnimation(8);
 
@@ -28,8 +31,11 @@ namespace Awesome_Game
             sTexture = Globals.Content.Load<Texture2D>("bot2");*/
             textures.Add(Globals.Content.Load<Texture2D>("bot2"));
             textures.Add(Globals.Content.Load<Texture2D>("bot3"));
+
+            healthBarTexture = Globals.Content.Load<Texture2D>("brown");
         }
 
+        
         public void ChangeTexture(int index)
         {
 
@@ -79,6 +85,21 @@ namespace Awesome_Game
                 SpriteEffects.None,
                 0f
             );
+
+            DrawHealthBar(spriteBatch, Position, 50, 5);
+        }
+
+        public void DrawHealthBar(SpriteBatch spriteBatch, Vector2 position, int width, int height)
+        {
+            Rectangle backgroundBar = new Rectangle((int)position.X - width / 2, (int)position.Y - height - 30, width, height);
+
+            float healthPercentage = (float)HP / LevelManager.Instance.bot1_HP;
+            int healthBarWidth = (int)(width * healthPercentage);
+            Rectangle healthBar = new Rectangle((int)position.X - width / 2, (int)position.Y - height - 30, healthBarWidth, height);
+
+            spriteBatch.Draw(healthBarTexture, backgroundBar, Color.Gray);
+
+            spriteBatch.Draw(healthBarTexture, healthBar, Color.Red);
         }
     }
 }
