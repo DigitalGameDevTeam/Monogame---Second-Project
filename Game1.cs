@@ -15,6 +15,10 @@ public class Game1 : Game
     public static Game1 Instance { get; private set; }
     private bool isFullScreen = false;
 
+    //temporary message
+    private string temporaryMessage = "";
+    private float messageTimeRemaining = 0;
+
     public Game1()
     {
         Instance = this;
@@ -26,21 +30,21 @@ public class Game1 : Game
         Window.ClientSizeChanged += OnClientSizeChanged;
     }
 
-protected override void Initialize()
-{
-    Globals.Bounds = new Point(900, 700);
-    _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
-    _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
-    _graphics.ApplyChanges();
+    protected override void Initialize()
+    {
+        Globals.Bounds = new Point(900, 700);
+        _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
+        _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
+        _graphics.ApplyChanges();
 
-    Globals.Content = Content;
+        Globals.Content = Content;
 
-    gameManager = new GameManager(GraphicsDevice);
+        gameManager = new GameManager(GraphicsDevice);
 
-    // Initialize the map with the desired scale
-    float mapScale = 0.05f;
-    _map = new Map(GraphicsDevice, new Point(Globals.Bounds.X, Globals.Bounds.Y), mapScale*4);
-    _cameraPosition = Vector2.Zero;
+        // Initialize the map with the desired scale
+        float mapScale = 0.05f;
+        _map = new Map(GraphicsDevice, new Point(Globals.Bounds.X, Globals.Bounds.Y), mapScale * 4);
+        _cameraPosition = Vector2.Zero;
 
         base.Initialize();
     }
@@ -89,8 +93,27 @@ protected override void Initialize()
         LevelManager.Instance.GetHarder();
 
         base.Update(gameTime);
+
+        //temporary message
+
+        if (messageTimeRemaining > 0)
+        {
+            messageTimeRemaining -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (messageTimeRemaining <= 0)
+            {
+
+                temporaryMessage = "";
+            }
+        }
+        //end of temporary message
     }
 
+    //temporary message
+    public void ShowTemporaryMessage(string message, float duration)
+    {
+        temporaryMessage = message;
+        messageTimeRemaining = duration;
+    }
     private void ToggleFullScreen()
     {
         isFullScreen = !isFullScreen;
@@ -125,6 +148,8 @@ protected override void Initialize()
     {
         GraphicsDevice.Clear(Color.Pink);
 
+
+
         _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
         _map.Draw(_spriteBatch, _cameraPosition);
         _spriteBatch.End();
@@ -148,6 +173,14 @@ protected override void Initialize()
         {
             _spriteBatch.DrawString(font, "Reloading ...", new Vector2(Globals.Bounds.X / 2 - 80, 2 * Globals.Bounds.Y / 3 + 60), Color.Black);
         }
+
+        //temporary message
+
+        if (!string.IsNullOrEmpty(temporaryMessage))
+        {
+            _spriteBatch.DrawString(font, temporaryMessage, new Vector2(10, Globals.Bounds.Y - 45), Color.Black);
+        }
+        //
 
         _spriteBatch.End();
 
