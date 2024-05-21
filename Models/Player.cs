@@ -2,29 +2,47 @@ namespace Awesome_Game;
 
 public class Player : Sprite
 {
+
     private Vector2 minPos, maxPos;
-    public int playerSpeed { get; set; } = 300;
-    public int Hp { get; private set; } = 100;
-    private readonly float cooldown;
+    public int playerSpeed { get; set; }
+    public int Hp { get; private set; }
+    private float cooldown;
     private float cooldownLeft;
-    public readonly int maxAmmo;
+    public int maxAmmo;
     public int Ammo { get; private set; }
-    public readonly float reloadTime;
+    public float reloadTime;
     public bool isReloading { get; private set; }
     public float reloadTimeLeft;
+    public int levelUpGap = 10;
 
     public Rectangle playerRectangle;
 
     public Player(Texture2D texture) : base(texture, GetStartPosition())
     {
-        cooldown = 0.25f;
+        playerSpeed = PlayerStats.Instance.player_Speed;
+        //Hp = PlayerStats.Instance.player_HP;
+        cooldown = PlayerStats.Instance.player_cooldown;
         cooldownLeft = 0f;
-        maxAmmo = 5;
+        maxAmmo = PlayerStats.Instance.player_maxAmmo;
         Ammo = maxAmmo;
-        reloadTime = 2f;
+        reloadTime = PlayerStats.Instance.player_reloadTime;
         isReloading = false;
         reloadTimeLeft = 0f;
         FramesPerSecond = 10;
+
+    }
+    public void upgradeStats()
+    {
+        if (GameStats.Instance.Kills == levelUpGap)
+        {
+            PowerUpsManager.Instance.levelUp();
+            levelUpGap += 10;
+        }
+        playerSpeed = PlayerStats.Instance.player_Speed;
+        //Hp = PlayerStats.Instance.player_HP;
+        cooldown = PlayerStats.Instance.player_cooldown;
+        maxAmmo = PlayerStats.Instance.player_maxAmmo;
+        reloadTime = PlayerStats.Instance.player_reloadTime;
     }
     
 
@@ -36,11 +54,11 @@ public class Player : Sprite
 
     public void TakeDamage(int damage)
     {
-        Hp -= damage;
+        PlayerStats.Instance.player_HP -= damage;
         SoundManager.Instance.PlayPlayerDamage();
-        if (Hp <= 0)
+        if (PlayerStats.Instance.player_HP <= 0)
         {
-            Hp = 0;
+            PlayerStats.Instance.player_HP = 0;
             Game1.Instance.GameOver();
         }
     }
@@ -91,6 +109,9 @@ public class Player : Sprite
 
     public new void Update(GameTime gameTime)
     {
+        upgradeStats();
+
+
         HandleInput(Keyboard.GetState(), gameTime);
 
         Position = sPosition;

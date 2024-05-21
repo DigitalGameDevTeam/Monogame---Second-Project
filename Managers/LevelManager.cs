@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Awesome_Game;
 public class LevelManager
 {
@@ -34,11 +36,18 @@ public class LevelManager
     {
         if (GameStats.Instance.Kills > level_Gap)
         {
-        difficultyLevel++;
-        bot1_HP += bot1_HP_Gap;
-        bot1_MovementSpeed += bot1_MovementSpeed_Gap;
-        bot1_SpawnRate -= bot1_SpawnRate_Gap;
-        level_Gap += 15;
+            Debug.WriteLine($"================================== ");
+            difficultyLevel++;
+            Debug.WriteLine($"difficulty : {difficultyLevel} ");
+            bot1_HP += bot1_HP_Gap;
+            Debug.WriteLine($"bot HP : {bot1_HP} ");
+            bot1_MovementSpeed += bot1_MovementSpeed_Gap;
+            Debug.WriteLine($"bot Speed : {bot1_MovementSpeed} ");
+            bot1_SpawnRate -= bot1_SpawnRate_Gap;
+            Debug.WriteLine($"spawn Rate : {bot1_SpawnRate} ");
+            level_Gap += 15;
+            Debug.WriteLine($"gap : {level_Gap} ");
+            Debug.WriteLine($"================================== ");
         }
     }
 

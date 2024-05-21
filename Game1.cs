@@ -37,7 +37,6 @@ public class Game1 : Game
 
         int initialKills = GameStats.Instance.Kills;
 
-
         base.Initialize();
     }
 
@@ -134,7 +133,7 @@ public class Game1 : Game
 
         _spriteBatch.DrawString(font, "Ammo: " + gameManager.Player.Ammo + " / " + gameManager.Player.maxAmmo, new Vector2(5, 60), Color.Black);
 
-        _spriteBatch.DrawString(font, "HP: " + gameManager.Player.Hp, new Vector2(10, 110), Color.Black);
+        _spriteBatch.DrawString(font, "HP: " + PlayerStats.Instance.player_HP, new Vector2(10, 110), Color.Black);
 
         if (gameOver)
         {
@@ -157,6 +156,7 @@ public class Game1 : Game
         gameOver = true;
         GameStats.Instance.UpdateHighScore();
         GameStats.Instance.Kills = 0;
+        PlayerStats.Instance.Load_startStats();
         LevelManager.Instance.Load();
     }
 

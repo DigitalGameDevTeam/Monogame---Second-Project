@@ -19,6 +19,7 @@ namespace Awesome_Game
         public void CauseDamage()
         {
             Lifespan = 0;
+            
             GameStats.Instance.Kills++; // Access the GameStats singleton instance and increment the kill count
         }
         
