@@ -15,6 +15,8 @@ public class Player : Sprite
     public float reloadTimeLeft;
     public int levelUpGap = 10;
 
+    public Rectangle playerRectangle;
+
     public Player(Texture2D texture) : base(texture, GetStartPosition())
     {
         playerSpeed = PlayerStats.Instance.player_Speed;
@@ -42,7 +44,7 @@ public class Player : Sprite
         maxAmmo = PlayerStats.Instance.player_maxAmmo;
         reloadTime = PlayerStats.Instance.player_reloadTime;
     }
-    public Rectangle playerRectangle;
+    
 
     public void LoadContent(ContentManager content)
     {

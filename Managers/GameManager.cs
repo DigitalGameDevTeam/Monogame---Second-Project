@@ -23,7 +23,7 @@ public class GameManager
         InputManager.Update();
         _player.Update(gameTime);
         //CalculateTranslation();
-        Bot1Manager.Update(_player);
+        Bot1Manager.Update(_player, gameTime);
         ProjectileManager.Update(Bot1Manager.Bots1);
     }
     public void Draw(GameTime gameTime)
@@ -31,7 +31,7 @@ public class GameManager
         spriteBatch.Begin();
         _player.Draw(spriteBatch);
         ProjectileManager.Draw();
-        Bot1Manager.Draw();
+        Bot1Manager.Draw(spriteBatch);
         spriteBatch.End();
     }
 }
