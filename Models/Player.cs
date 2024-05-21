@@ -13,6 +13,8 @@ public class Player : Sprite
     public bool isReloading { get; private set; }
     public float reloadTimeLeft;
 
+    public Rectangle playerRectangle;
+
     public Player(Texture2D texture) : base(texture, GetStartPosition())
     {
         cooldown = 0.25f;
@@ -24,7 +26,7 @@ public class Player : Sprite
         reloadTimeLeft = 0f;
         FramesPerSecond = 10;
     }
-    public Rectangle playerRectangle;
+    
 
     public void LoadContent(ContentManager content)
     {

@@ -1,48 +1,55 @@
-namespace Awesome_Game;
-
-public abstract class AnimatedSprite
+namespace Awesome_Game
 {
-    protected Texture2D sTexture;
-    protected Vector2 sPosition;
-    protected Vector2 playerPosition;
-    protected Rectangle[] sRectangles;
-    protected int frameIndex;
-
-    private double timeElapsed;
-    private double timeToUpdade;
-    public int FramesPerSecond
+    public abstract class AnimatedSprite
     {
-        set { timeToUpdade = (1f / value); }
-    }
-    //protected Vector2 sDirection = Vector2.Zero;
+        protected Texture2D sTexture;
+        protected Vector2 sPosition;
+        protected Rectangle[] sRectangles;
+        protected int frameIndex;
 
-    public AnimatedSprite(Vector2 position)
-    {
-        sPosition = position;
-    }
-
-    public void AddAnimation(int frames)
-    {
-        int Width = sTexture.Width / frames;
-        sRectangles = new Rectangle[frames];
-        for (int i = 0; i < frames; i++)
+        private double timeElapsed;
+        private double timeToUpdate;
+        
+        public float Rotation { get; set; }
+        public Vector2 Position
         {
-            sRectangles[i] = new Rectangle(i * Width, 0, Width, sTexture.Height);
+            get => sPosition;
+            set => sPosition = value;
         }
-    }
 
-    public void Update(GameTime gameTime)
-    {
-        timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
-
-        if (timeElapsed > timeToUpdade)
+        public int FramesPerSecond
         {
-            timeElapsed -= timeToUpdade;
+            set { timeToUpdate = (1f / value); }
+        }
 
-            if (frameIndex < sRectangles.Length - 1)
-                frameIndex++;
-            else    
-                frameIndex = 0;
+        public AnimatedSprite(Vector2 position)
+        {
+            sPosition = position;
+        }
+
+        public void AddAnimation(int frames)
+        {
+            int width = sTexture.Width / frames;
+            sRectangles = new Rectangle[frames];
+            for (int i = 0; i < frames; i++)
+            {
+                sRectangles[i] = new Rectangle(i * width, 0, width, sTexture.Height);
+            }
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            timeElapsed += gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (timeElapsed > timeToUpdate)
+            {
+                timeElapsed -= timeToUpdate;
+
+                if (frameIndex < sRectangles.Length - 1)
+                    frameIndex++;
+                else    
+                    frameIndex = 0;
+            }
         }
     }
 }
