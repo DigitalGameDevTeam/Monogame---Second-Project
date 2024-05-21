@@ -20,8 +20,8 @@ public class Game1 : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
 
-        Window.AllowUserResizing = true; // Enable window resizing
-        Window.ClientSizeChanged += OnClientSizeChanged; // Event handler for resizing
+        Window.AllowUserResizing = true;
+        Window.ClientSizeChanged += OnClientSizeChanged;
     }
 
     protected override void Initialize()
@@ -68,12 +68,6 @@ public class Game1 : Game
 
         if (gameOver)
         {
-            /*gameOverTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (gameOverTime >= 5f)
-            {
-                ResetGame();
-            }*/
-
             resetButton.Update(mouseState);
 
             if (resetButton.IsClicked && previousMouseState.LeftButton == ButtonState.Released)
