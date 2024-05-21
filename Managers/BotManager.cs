@@ -1,10 +1,9 @@
 namespace Awesome_Game
 {
-    public static class Bot1Manager
+    public static class BotManager
     {
-        public static List<Bot1> Bots1 { get; } = new();
+        public static List<Bot> Bots { get; } = new();
         private static List<Texture2D> textures;
-        //private static Texture2D _texture;
         private static float _spawnCooldown;
         private static float _spawnTime;
         private static Random _random;
@@ -19,7 +18,7 @@ namespace Awesome_Game
 
             };
 
-            _spawnCooldown = LevelManager.Instance.bot1_SpawnRate;
+            _spawnCooldown = LevelManager.Instance.bot_SpawnRate;
             _spawnTime = _spawnCooldown;
             _random = new();
             _padding = textures[0].Width / 2;
@@ -47,9 +46,9 @@ namespace Awesome_Game
 
         public static void AddBot()
         {
-            var bot = new Bot1(textures, RandomPosition());
+            var bot = new Bot(textures, RandomPosition());
             bot.LoadContent(Globals.Content);
-            Bots1.Add(bot);
+            Bots.Add(bot);
         }
 
         public static void Update(Player player, GameTime gameTime)
@@ -61,16 +60,16 @@ namespace Awesome_Game
                 AddBot();
             }
 
-            foreach (var bot in Bots1)
+            foreach (var bot in Bots)
             {
                 bot.Update(player, gameTime);
             }
-            Bots1.RemoveAll(bot => bot.HP <= 0);
+            Bots.RemoveAll(bot => bot.HP <= 0);
         }
 
         public static void Draw(SpriteBatch spriteBatch)
         {
-            foreach (var bot in Bots1)
+            foreach (var bot in Bots)
             {
                 bot.Draw(spriteBatch);
             }

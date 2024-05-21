@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 namespace Awesome_Game
 {
-    public class Bot1 : AnimatedSprite
+    public class Bot : AnimatedSprite
     {
         public int HP { get; private set; }
         public float maxHP { get; private set; }
@@ -11,13 +11,13 @@ namespace Awesome_Game
         public Texture2D healthBarTexture;
         private int currentTextureIndex;
 
-        public Bot1(List<Texture2D> tex, Vector2 pos) : base(pos)
+        public Bot(List<Texture2D> tex, Vector2 pos) : base(pos)
         {
             textures = tex;
             currentTextureIndex = 0;
             sTexture = textures[currentTextureIndex];
-            Speed = LevelManager.Instance.bot1_MovementSpeed;
-            HP = LevelManager.Instance.bot1_HP;
+            Speed = LevelManager.Instance.bot_MovementSpeed;
+            HP = LevelManager.Instance.bot_HP;
             maxHP = HP;
             FramesPerSecond = 10;
             AddAnimation(8);
@@ -27,15 +27,12 @@ namespace Awesome_Game
 
         public void LoadContent(ContentManager content)
         {
-            /*sTexture = Globals.Content.Load<Texture2D>("bot1");
-            sTexture = Globals.Content.Load<Texture2D>("bot2");*/
             textures.Add(Globals.Content.Load<Texture2D>("bot2"));
             textures.Add(Globals.Content.Load<Texture2D>("bot3"));
 
             healthBarTexture = Globals.Content.Load<Texture2D>("brown");
         }
-
-        
+  
         public void ChangeTexture(int index)
         {
 
@@ -93,7 +90,7 @@ namespace Awesome_Game
         {
             Rectangle backgroundBar = new Rectangle((int)position.X - width / 2, (int)position.Y - height - 30, width, height);
 
-            float healthPercentage = (float)HP / LevelManager.Instance.bot1_HP;
+            float healthPercentage = (float)HP / LevelManager.Instance.bot_HP;
             int healthBarWidth = (int)(width * healthPercentage);
             Rectangle healthBar = new Rectangle((int)position.X - width / 2, (int)position.Y - height - 30, healthBarWidth, height);
 

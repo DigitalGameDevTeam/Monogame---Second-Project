@@ -2,10 +2,7 @@ namespace Awesome_Game;
 
 public class Player : Sprite
 {
-
-    private Vector2 minPos, maxPos;
     public int playerSpeed { get; set; }
-    public int Hp { get; private set; }
     private float cooldown;
     private float cooldownLeft;
     public int maxAmmo;
@@ -14,13 +11,11 @@ public class Player : Sprite
     public bool isReloading { get; private set; }
     public float reloadTimeLeft;
     public int levelUpGap = 10;
-
     public Rectangle playerRectangle;
 
     public Player(Texture2D texture) : base(texture, GetStartPosition())
     {
         playerSpeed = PlayerStats.Instance.player_Speed;
-        //Hp = PlayerStats.Instance.player_HP;
         cooldown = PlayerStats.Instance.player_cooldown;
         cooldownLeft = 0f;
         maxAmmo = PlayerStats.Instance.player_maxAmmo;
@@ -39,14 +34,13 @@ public class Player : Sprite
             levelUpGap += 10;
         }
         playerSpeed = PlayerStats.Instance.player_Speed;
-        //Hp = PlayerStats.Instance.player_HP;
         cooldown = PlayerStats.Instance.player_cooldown;
         maxAmmo = PlayerStats.Instance.player_maxAmmo;
         reloadTime = PlayerStats.Instance.player_reloadTime;
     }
     
 
-    public void LoadContent(ContentManager content)
+    public void LoadContent()
     {
         sTexture = Globals.Content.Load<Texture2D>("player");
         AddAnimation(6);
@@ -69,7 +63,7 @@ public class Player : Sprite
         if (isReloading) return;
         cooldownLeft = reloadTime;
         isReloading = true;
-        Ammo = 0; //iguala a 0 para que durante o tempo de Reload o Visual Ui mostre 0
+        Ammo = 0;
     }
     private static Vector2 GetStartPosition()
     {
@@ -101,12 +95,6 @@ public class Player : Sprite
         ProjectileManager.AddProjectile(pd);
     }
 
-    public void SetBounds(Point mapSize, Point tileSize)
-    {
-        minPos = new((-tileSize.X / 2) + origin.X, (-tileSize.Y / 2) + origin.Y);
-        maxPos = new(mapSize.X - (tileSize.X / 2) - origin.X, mapSize.Y - (tileSize.X / 2) - origin.Y);
-    }
-
     public new void Update(GameTime gameTime)
     {
         upgradeStats();
@@ -123,7 +111,7 @@ public class Player : Sprite
         else if (isReloading)
         {
             reloadTimeLeft += Globals.TotalSeconds;
-            if (reloadTimeLeft >= 0) //verifica se o tempo de reload acabou
+            if (reloadTimeLeft >= 0)
             {
                 Ammo = maxAmmo;
                 isReloading = false;

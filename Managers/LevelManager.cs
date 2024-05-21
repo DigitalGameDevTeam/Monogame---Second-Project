@@ -17,14 +17,14 @@ public class LevelManager
     }
     //Game status
     public int difficultyLevel { get; set; }
-    public int bot1_HP { get; set; }
-    public int bot1_MovementSpeed { get; set; }
-    public float bot1_SpawnRate { get; set; }
+    public int bot_HP { get; set; }
+    public int bot_MovementSpeed { get; set; }
+    public float bot_SpawnRate { get; set; }
 
     //Games Status Gaps
-    public int bot1_HP_Gap = 1;
-    public int bot1_MovementSpeed_Gap = 50;
-    public float bot1_SpawnRate_Gap = 0.5f;
+    public int bot_HP_Gap = 1;
+    public int bot_MovementSpeed_Gap = 50;
+    public float bot_SpawnRate_Gap = 0.5f;
     public int level_Gap = 15;
 
     public LevelManager()
@@ -39,12 +39,12 @@ public class LevelManager
             Debug.WriteLine($"================================== ");
             difficultyLevel++;
             Debug.WriteLine($"difficulty : {difficultyLevel} ");
-            bot1_HP += bot1_HP_Gap;
-            Debug.WriteLine($"bot HP : {bot1_HP} ");
-            bot1_MovementSpeed += bot1_MovementSpeed_Gap;
-            Debug.WriteLine($"bot Speed : {bot1_MovementSpeed} ");
-            bot1_SpawnRate -= bot1_SpawnRate_Gap;
-            Debug.WriteLine($"spawn Rate : {bot1_SpawnRate} ");
+            bot_HP += bot_HP_Gap;
+            Debug.WriteLine($"bot HP : {bot_HP} ");
+            bot_MovementSpeed += bot_MovementSpeed_Gap;
+            Debug.WriteLine($"bot Speed : {bot_MovementSpeed} ");
+            bot_SpawnRate -= bot_SpawnRate_Gap;
+            Debug.WriteLine($"spawn Rate : {bot_SpawnRate} ");
             level_Gap += 15;
             Debug.WriteLine($"gap : {level_Gap} ");
             Debug.WriteLine($"================================== ");
@@ -54,8 +54,8 @@ public class LevelManager
     public void Load()
     {
         difficultyLevel = 1;
-        bot1_HP = 1;
-        bot1_MovementSpeed = 100;
-        bot1_SpawnRate = 1f;
+        bot_HP = 1;
+        bot_MovementSpeed = 100;
+        bot_SpawnRate = 1f;
     }
 }

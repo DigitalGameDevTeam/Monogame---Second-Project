@@ -10,10 +10,10 @@ public static class ProjectileManager
 
     public static void AddProjectile(ProjectileData data)
     {
-        Projectiles.Add(new Projectile(_texture, data)); // No need to pass GameStats instance here
+        Projectiles.Add(new Projectile(_texture, data));
     }
 
-    public static void Update(List<Bot1> Bots1)
+    public static void Update(List<Bot> Bots1)
     {
         foreach (var p in Projectiles)
         {

@@ -1,6 +1,3 @@
-using System.Diagnostics;
-using System.Security.Cryptography;
-
 namespace Awesome_Game;
 
 public class PowerUpsManager

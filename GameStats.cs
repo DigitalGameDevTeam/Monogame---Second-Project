@@ -17,12 +17,12 @@ public class GameStats
     public int Kills { get; set; }
     public int HighScore { get; private set; }
 
-    private const string HighScoreFileName = "highscore.txt"; // File name to store high score
+    private const string HighScoreFileName = "highscore.txt";
 
     private GameStats()
     {
         Kills = 0;
-        LoadHighScore(); // Load high score when the instance is created
+        LoadHighScore();
     }
 
     public void UpdateHighScore()
@@ -30,12 +30,12 @@ public class GameStats
         if (Kills > HighScore)
         {
             HighScore = Kills;
-            SaveHighScore(); // Save high score if it's updated
-            Kills = 0; // Reset kills if high score is updated
+            SaveHighScore();
+            Kills = 0;
         }
         else
         {
-            Kills = 0; // Reset kills if high score is not updated
+            Kills = 0;
         }
     }
 
@@ -49,7 +49,7 @@ public class GameStats
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error loading high score: " + e.Message);
+                Console.WriteLine("Erro ao ler o HighScore: " + e.Message);
             }
         }
     }
@@ -62,7 +62,7 @@ public class GameStats
         }
         catch (Exception e)
         {
-            Console.WriteLine("Error saving high score: " + e.Message);
+            Console.WriteLine("Erro ao guardar o HighScore: " + e.Message);
         }
     }
 }

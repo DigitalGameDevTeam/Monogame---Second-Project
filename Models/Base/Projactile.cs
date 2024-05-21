@@ -1,9 +1,10 @@
 namespace Awesome_Game
 {
-    public class Projectile : MovingSprite
+    public class Projectile : Sprite
     {
         public Vector2 Direction { get; set; }
         public float Lifespan { get; private set; }
+
         
         // Remove the gameStats property from here
 

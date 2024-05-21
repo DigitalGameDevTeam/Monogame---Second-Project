@@ -6,7 +6,6 @@ namespace Awesome_Game
         protected Vector2 sPosition;
         protected Rectangle[] sRectangles;
         protected int frameIndex;
-
         private double timeElapsed;
         private double timeToUpdate;
         
@@ -19,7 +18,7 @@ namespace Awesome_Game
 
         public int FramesPerSecond
         {
-            set { timeToUpdate = (1f / value); }
+            set { timeToUpdate = 1f / value; }
         }
 
         public AnimatedSprite(Vector2 position)

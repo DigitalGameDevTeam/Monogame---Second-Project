@@ -5,6 +5,7 @@ public class Sprite(Texture2D tex, Vector2 pos) : AnimatedSprite(pos)
     protected readonly Texture2D _texture = tex;
     protected readonly Vector2 origin = new(tex.Width / 2, tex.Height / 2);
     public float Scale { get; set; } = 0.5f;
+    public int Speed { get; set; } = 300;
     public Color Color { get; set; } = Color.White;
     public void Draw()
     {

@@ -14,24 +14,22 @@ public class GameManager
         spriteBatch = new SpriteBatch(graphicsDevice);
 
         _player = new(Globals.Content.Load<Texture2D>("player"));
-        _player.LoadContent(content);
-        Bot1Manager.Init();
-        //_player.SetBounds(_map.MapSize, _map.TileSize);
+        _player.LoadContent();
+        BotManager.Init();
     }
     public void Update(GameTime gameTime)
     {
         InputManager.Update();
         _player.Update(gameTime);
-        //CalculateTranslation();
-        Bot1Manager.Update(_player, gameTime);
-        ProjectileManager.Update(Bot1Manager.Bots1);
+        BotManager.Update(_player, gameTime);
+        ProjectileManager.Update(BotManager.Bots);
     }
     public void Draw(GameTime gameTime)
     {
         spriteBatch.Begin();
         _player.Draw(spriteBatch);
         ProjectileManager.Draw();
-        Bot1Manager.Draw(spriteBatch);
+        BotManager.Draw(spriteBatch);
         spriteBatch.End();
     }
 }
