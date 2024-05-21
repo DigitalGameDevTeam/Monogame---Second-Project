@@ -26,6 +26,7 @@ public class Player : Sprite
         FramesPerSecond = 10;
 
     }
+    
     public void upgradeStats()
     {
         if (GameStats.Instance.Kills == levelUpGap)
@@ -39,7 +40,6 @@ public class Player : Sprite
         reloadTime = PlayerStats.Instance.player_reloadTime;
     }
     
-
     public void LoadContent()
     {
         sTexture = Globals.Content.Load<Texture2D>("player");
