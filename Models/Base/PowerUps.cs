@@ -7,7 +7,7 @@ public static class PowerUps
     public static int upgrade_HP(int value)
     {
         value += 20;
-        Debug.WriteLine($"  >> upgrade_H : {value}");
+        Debug.WriteLine($"  >> upgrade_HP : {value}");
         return value;
     }
     public static int upgrade_Speed(int value)
