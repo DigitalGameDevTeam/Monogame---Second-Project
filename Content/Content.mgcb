@@ -134,6 +134,12 @@
 /processorParam:Quality=Best
 /build:Sounds/background.wav
 
+#begin Sounds/damage.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/damage.wav
+
 #begin Sounds/shoot_reload.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

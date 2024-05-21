@@ -9,9 +9,9 @@ public class Game1 : Game
     private bool gameOver = false;
     private Button resetButton;
     private Texture2D buttonTexture;
-    //private float gameOverTime = 0f;
     private MouseState previousMouseState;
     public static Game1 Instance { get; private set; }
+    private bool isFullScreen = false;
 
     public Game1()
     {
@@ -19,11 +19,14 @@ public class Game1 : Game
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+
+        Window.AllowUserResizing = true; // Enable window resizing
+        Window.ClientSizeChanged += OnClientSizeChanged; // Event handler for resizing
     }
 
     protected override void Initialize()
     {
-        Globals.Bounds = new(900, 700);
+        Globals.Bounds = new(1100, 750);
         _graphics.PreferredBackBufferWidth = Globals.Bounds.X;
         _graphics.PreferredBackBufferHeight = Globals.Bounds.Y;
         _graphics.ApplyChanges();
@@ -57,6 +60,12 @@ public class Game1 : Game
             Exit();
 
         MouseState mouseState = Mouse.GetState();
+        KeyboardState keyboardState = Keyboard.GetState();
+
+        if (keyboardState.IsKeyDown(Keys.F11))
+        {
+            ToggleFullScreen();
+        }
 
         if (gameOver)
         {
@@ -84,9 +93,39 @@ public class Game1 : Game
         base.Update(gameTime);
     }
 
+    private void ToggleFullScreen()
+    {
+        isFullScreen = !isFullScreen;
+
+        if (isFullScreen)
+        {
+            DisplayMode displayMode = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+            _graphics.PreferredBackBufferWidth = displayMode.Width;
+            _graphics.PreferredBackBufferHeight = displayMode.Height;
+            _graphics.IsFullScreen = true;
+            Globals.Bounds = new(displayMode.Width, displayMode.Height);
+        }
+        else
+        {
+            _graphics.PreferredBackBufferWidth = 1100;
+            _graphics.PreferredBackBufferHeight = 750;
+            _graphics.IsFullScreen = false;
+        }
+
+        _graphics.ApplyChanges();
+    }
+
+    private void OnClientSizeChanged(object sender, EventArgs e)
+    {
+        if (!isFullScreen)
+        {
+            Globals.Bounds = new(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+        }
+    }
+
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Pink);
+        GraphicsDevice.Clear(Color.White);
 
         _spriteBatch.Begin();
         gameManager.Draw(gameTime);
@@ -119,14 +158,11 @@ public class Game1 : Game
         GameStats.Instance.UpdateHighScore();
         GameStats.Instance.Kills = 0;
         LevelManager.Instance.Load();
-
-        //gameOverTime = 0f;
     }
 
     private void ResetGame()
     {
         gameOver = false;
-        //gameOverTime = 0f;
         gameManager = new GameManager(GraphicsDevice);
         Bot1Manager.Bots1.Clear();
     }

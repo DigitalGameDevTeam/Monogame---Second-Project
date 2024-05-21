@@ -17,6 +17,7 @@ public class SoundManager
 
     private SoundEffect playerShoot;
     private SoundEffect playerReload;
+    private SoundEffect playerDamage;
     private Song backgroundMusic;
     private float effectVolume = 0.1f;
 
@@ -24,6 +25,7 @@ public class SoundManager
     {
         playerShoot = Globals.Content.Load<SoundEffect>("Sounds/shoot");
         playerReload = Globals.Content.Load<SoundEffect>("Sounds/shoot_reload");
+        playerDamage = Globals.Content.Load<SoundEffect>("Sounds/damage");
         backgroundMusic = Globals.Content.Load<Song>("Sounds/background");
     }
 
@@ -35,6 +37,11 @@ public class SoundManager
     public void PlayPlayerReload()
     {
         playerReload.Play(effectVolume, 0.0f, 0.0f);
+    }
+
+    public void PlayPlayerDamage()
+    {
+        playerDamage.Play(effectVolume, 0.0f, 0.0f);
     }
 
     public void PlayBackgroundMusic()

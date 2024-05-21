@@ -37,6 +37,7 @@ public class Player : Sprite
     public void TakeDamage(int damage)
     {
         Hp -= damage;
+        SoundManager.Instance.PlayPlayerDamage();
         if (Hp <= 0)
         {
             Hp = 0;
@@ -88,7 +89,7 @@ public class Player : Sprite
         maxPos = new(mapSize.X - (tileSize.X / 2) - origin.X, mapSize.Y - (tileSize.X / 2) - origin.Y);
     }
 
-    public void Update(GameTime gameTime)
+    public new void Update(GameTime gameTime)
     {
         HandleInput(Keyboard.GetState(), gameTime);
 
