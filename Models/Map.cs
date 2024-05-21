@@ -20,7 +20,7 @@ public class Map
 public void Draw(SpriteBatch spriteBatch, Vector2 cameraPosition)
 {
     // Calculate the number of tiles to cover the screen and beyond
-    int tilesX = (_screenSize.X / TileSize.X) + 4; // Triple width
+    int tilesX = (_screenSize.X / TileSize.X) + 20; // Triple width
     int tilesY = (_screenSize.Y / TileSize.Y) + 4; // Triple height
 
     for (int y = 0; y < tilesY; y++)

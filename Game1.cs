@@ -17,12 +17,16 @@ private Vector2 _cameraPosition;
     private MouseState previousMouseState;
     public static Game1 Instance { get; private set; }
 
+      private bool isFullScreen = false;
+
     public Game1()
     {
         Instance = this;
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        Window.AllowUserResizing = true; // Enable window resizing
+        Window.ClientSizeChanged += OnClientSizeChanged; // Event handler for resizing
     }
 
 protected override void Initialize()
@@ -44,6 +48,35 @@ protected override void Initialize()
     base.Initialize();
 }
 
+    private void ToggleFullScreen()
+    {
+        isFullScreen = !isFullScreen;
+
+        if (isFullScreen)
+        {
+            DisplayMode displayMode = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+            _graphics.PreferredBackBufferWidth = displayMode.Width;
+            _graphics.PreferredBackBufferHeight = displayMode.Height;
+            _graphics.IsFullScreen = true;
+            Globals.Bounds = new(displayMode.Width, displayMode.Height);
+        }
+        else
+        {
+            _graphics.PreferredBackBufferWidth = 1100;
+            _graphics.PreferredBackBufferHeight = 750;
+            _graphics.IsFullScreen = false;
+        }
+
+        _graphics.ApplyChanges();
+    }
+
+    private void OnClientSizeChanged(object sender, EventArgs e)
+    {
+        if (!isFullScreen)
+        {
+            Globals.Bounds = new(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+        }
+    }
 
     protected override void LoadContent()
     {
@@ -64,6 +97,12 @@ protected override void Update(GameTime gameTime)
         Exit();
 
     MouseState mouseState = Mouse.GetState();
+        KeyboardState keyboardState = Keyboard.GetState();
+
+        if (keyboardState.IsKeyDown(Keys.F11))
+        {
+            ToggleFullScreen();
+        }
 
     if (gameOver)
     {
@@ -77,6 +116,8 @@ protected override void Update(GameTime gameTime)
         previousMouseState = mouseState;
         return;
     }
+
+    
 
     Globals.Update(gameTime);
     gameManager.Update(gameTime);
