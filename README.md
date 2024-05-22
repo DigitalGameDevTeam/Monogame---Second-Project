@@ -10,6 +10,8 @@ Grupo : -> João Ribeiro // 27926 -> Martim Moreira // 22354 -> Gonçalo Veloso 
 3 - Interface	
 4 - Arte	
 5 - Dificuldade	
+6 - Sons e Música
+7 - Conclusão
 
 
 Índice de Ilustrações:
@@ -85,6 +87,29 @@ Mais concretamente:
 
 Powerup realiza um aumento de um dos seguintes status (Vida, Velocidade de Movimento, Cooldown de Disparo, Munição Máxima, Tempo de Recarga).
 
+
+
+6 - Sons e Música
+Para efeitos sonoros, o jogo utiliza:
+
+•	C418 Aria Math: música de fundo 
+https://www.youtube.com/watch?v=atgjKEgSqSU )
+
+•	Bullet Sound: é o efeito sonoro que irá tocar quando uma bala é disparada.
+•	Reload Sound: é o efeito sonoro que irá tocar quando o jogador recarregar a arma.
+•	Damage Sound: é o efeito sonoro que irá tocar quando o jogador tomar dano.
+
+
+7 - Conclusão
+
+Chegamos ao término deste projeto de desenvolvimento do nosso jogo topdown shooter para a disciplina de Técnicas de Desenvolvimento de Videojogos. Foi um percurso desafiador, mas igualmente enriquecedor. Fizemos um produto final de que nos podemos orgulhar.
+
+Gostaríamos de destacar a importância do primeiro projeto de analisar um jogo existente, que foi essencial para compreendermos melhor os elementos-chave de um bom design e gameplay. Essa análise inicial permitiu-nos aplicar esses conhecimentos ao nosso próprio jogo de forma eficaz.
+
+Este projeto não só reforçou as nossas competências técnicas, mas também demonstrou a importância do trabalho em equipa, crucial para o nosso desenvolvimento pessoal neste curso.
+
+
+ 
 
 
 
