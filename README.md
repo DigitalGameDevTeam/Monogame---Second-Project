@@ -43,8 +43,11 @@ O jogador pode pressionar a tecla “R” o jogador pode carregar a Arma.
 No canto superior esquerdo do jogo o jogador também tem acesso às suas estatitsticas que guardam os seguintes dados cruciais:
 
 •	número de Kills da rodada atual (Kill Count)
+
 •	highscore que regista o número de kills em ficheiro (High Score)
+
 •	quantidade de munição disponível (Ammo)
+
 •	quantidade de vida que possui (HP)
 
 ![image](https://github.com/DigitalGameDevTeam/Monogame---Second-Project/assets/148542897/010e769c-c0f5-453d-b6c6-23421ecb4b56)
@@ -66,7 +69,9 @@ Figura 3 - Exemplo de powerup (hp)
 
 
 4 - Arte
+
 Em termos de sprites, o jogo utiliza 3 sprites diferentes, 1 para o jogador e 2 para os inimigos.
+
 O fundo do jogo é “tile generated”
 
 ![image](https://github.com/DigitalGameDevTeam/Monogame---Second-Project/assets/148542897/11864cbd-7243-4d2b-9d42-105c0da14b52)
@@ -83,6 +88,7 @@ Sendo um jogo do estilo Arcade, foi adicionado um controle de dificuldade.
 Mais concretamente:
 
 •	A cada 15 Kills os inimigos vão ficando mais fortes. 
+
 •	E para acompanhar esse crescimento a cada 10 kills, um PowerUP.
 
 Powerup realiza um aumento de um dos seguintes status (Vida, Velocidade de Movimento, Cooldown de Disparo, Munição Máxima, Tempo de Recarga).
@@ -90,13 +96,16 @@ Powerup realiza um aumento de um dos seguintes status (Vida, Velocidade de Movim
 
 
 6 - Sons e Música
+
 Para efeitos sonoros, o jogo utiliza:
 
 •	C418 Aria Math: música de fundo 
 https://www.youtube.com/watch?v=atgjKEgSqSU )
 
 •	Bullet Sound: é o efeito sonoro que irá tocar quando uma bala é disparada.
+
 •	Reload Sound: é o efeito sonoro que irá tocar quando o jogador recarregar a arma.
+
 •	Damage Sound: é o efeito sonoro que irá tocar quando o jogador tomar dano.
 
 
