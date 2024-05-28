@@ -265,7 +265,7 @@
             {
                 case MenuState.Menu:
                     _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
-                    _spriteBatch.DrawString(font, "CYBER ASSAULT", new Vector2((Globals.Bounds.X - font.MeasureString("CYBER ASSAULT").X) / 2, 110), Color.Black);
+                    _spriteBatch.DrawString(font, "Zombie Rampage", new Vector2((Globals.Bounds.X - font.MeasureString("Zombie Rampage").X) / 2, 110), Color.Black);
                     startButton.Draw(_spriteBatch);
                     exitButton.Draw(_spriteBatch);
                     _spriteBatch.End();
