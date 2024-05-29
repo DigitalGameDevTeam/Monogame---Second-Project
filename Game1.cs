@@ -83,19 +83,22 @@
             Vector2 startButtonPosition = new Vector2((Globals.Bounds.X - startButtonTexture.Width) / 2, (Globals.Bounds.Y - startButtonTexture.Height) / 2 - 50);
             Vector2 exitButtonPosition = new Vector2((Globals.Bounds.X - exitButtonTexture.Width) / 2, (Globals.Bounds.Y - exitButtonTexture.Height) / 2 + 50);
             Vector2 resetButtonPosition = new Vector2((Globals.Bounds.X - buttonTexture.Width) / 2, (Globals.Bounds.Y - buttonTexture.Height) / 2 + 150);
-            continueButton = new Button(continueButtonTexture, new Vector2(Globals.Bounds.X / 2 - continueButtonTexture.Width / 2, Globals.Bounds.Y / 2));
-            mainMenuButton = new Button(mainMenuButtonTexture, new Vector2(Globals.Bounds.X / 2 - mainMenuButtonTexture.Width / 2, Globals.Bounds.Y / 2 + 100));
+            Vector2 continueButtonPosition = new Vector2((Globals.Bounds.X - continueButtonTexture.Width) / 2, (Globals.Bounds.Y - continueButtonTexture.Height) / 2 + 150);
+            Vector2 mainMenuButtonPosition = new Vector2((Globals.Bounds.X - mainMenuButtonTexture.Width) / 2, (Globals.Bounds.Y - mainMenuButtonTexture.Height) / 2 + 150);
 
             // Create buttons
             startButton = new Button(startButtonTexture, startButtonPosition);
             exitButton = new Button(exitButtonTexture, exitButtonPosition);
             resetButton = new Button(buttonTexture, resetButtonPosition);
+            continueButton = new Button(continueButtonTexture, continueButtonPosition);
+            mainMenuButton = new Button(mainMenuButtonTexture, mainMenuButtonPosition);
 
             // Inside LoadContent method of Game1 class
             startButton.UpdateRectangle(new Vector2((Globals.Bounds.X - startButtonTexture.Width) / 2, (Globals.Bounds.Y - startButtonTexture.Height) / 2 - 50));
             exitButton.UpdateRectangle(new Vector2((Globals.Bounds.X - exitButtonTexture.Width) / 2, (Globals.Bounds.Y - exitButtonTexture.Height) / 2 + 50));
             resetButton.UpdateRectangle(new Vector2((Globals.Bounds.X - buttonTexture.Width) / 2, (Globals.Bounds.Y - buttonTexture.Height) / 2 + 150));
-
+            continueButton.UpdateRectangle(new Vector2((Globals.Bounds.X - continueButtonTexture.Width) / 2, (Globals.Bounds.Y - continueButtonTexture.Height) / 2 + 150));
+            mainMenuButton.UpdateRectangle(new Vector2((Globals.Bounds.X - mainMenuButtonTexture.Width) / 2, (Globals.Bounds.Y - mainMenuButtonTexture.Height) / 2 + 150));
         }
 
 
