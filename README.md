@@ -5,12 +5,19 @@ Técnicas de Desenvolvimento de Jogos - 2ªFase:
 Grupo : -> João Ribeiro // 27926 -> Martim Moreira // 22354 -> Gonçalo Veloso // 22348
 
 Índice:
+
 1 - Introdução	
+
 2 - Movimentos e ações	
+
 3 - Interface	
+
 4 - Arte	
+
 5 - Dificuldade	
+
 6 - Sons e Música
+
 7 - Conclusão
 
 
