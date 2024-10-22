@@ -4,7 +4,7 @@ Técnicas de Desenvolvimento de Jogos - 2ªFase:
 
 Grupo : -> João Ribeiro // 27926 -> Martim Moreira // 22354 -> Gonçalo Veloso // 22348
 
-Índice:
+# Índice:
 
 1 - Introdução	
 
@@ -21,23 +21,27 @@ Grupo : -> João Ribeiro // 27926 -> Martim Moreira // 22354 -> Gonçalo Veloso 
 7 - Conclusão
 
 
-Índice de Ilustrações:
+# Índice de Ilustrações:
+
 Figura 1 - Interface Gráfica do jogo	
+
 Figura 2 - Interface Gráfica pt2	
+
 Figura 3 - Exemplo de powerup (hp)	
+
 Figura 4 - Sprites e Imagens	
 
 
 
 
-1 - Introdução:
+# 1 - Introdução:
 
 Zombie Rampage é um jogo baseado em “Top Down Shooter” feito na framework MonoGame, ou seja, é um jogo 2D com a perspetiva vista de cima. 
 Consiste em um jogo de sobrevivência, o objetivo do jogador é sobreviver a hordas de inimigos, para complicar a vida do jogador, a dificuldade do jogo aumenta a cada zombie que ele, para compensar, o jogador também vai ficando mais forte para ser capaz de lutar contra as hordas. 
 
 
 
-2 - Movimentos e ações:
+# 2 - Movimentos e ações:
 
 O jogador pode andar usando as teclas “W” (frente), “A” (esquerda), “D” (direita) e “S” (baixo).
 O jogador pode disparar um tiro clicando no “Botão Esquerdo do Rato” ou segurar o “Botão Esquerdo do Rato” para disparar uma rajada de tiros.
@@ -45,7 +49,7 @@ O jogador pode pressionar a tecla “R” o jogador pode carregar a Arma.
 
 
 
-3 - Interface
+# 3 - Interface
 
 No canto superior esquerdo do jogo o jogador também tem acesso às suas estatitsticas que guardam os seguintes dados cruciais:
 
@@ -75,7 +79,7 @@ Figura 3 - Exemplo de powerup (hp)
 
 
 
-4 - Arte
+# 4 - Arte
 
 Em termos de sprites, o jogo utiliza 3 sprites diferentes, 1 para o jogador e 2 para os inimigos.
 
@@ -87,7 +91,7 @@ Figura 4 - Sprites e Imagens
 
 
 
-5 - Dificuldade
+# 5 - Dificuldade
 
 Sendo um jogo do estilo Arcade, foi adicionado um controle de dificuldade.
 
@@ -102,7 +106,7 @@ Powerup realiza um aumento de um dos seguintes status (Vida, Velocidade de Movim
 
 
 
-6 - Sons e Música
+# 6 - Sons e Música
 
 Para efeitos sonoros, o jogo utiliza:
 
@@ -116,7 +120,7 @@ https://www.youtube.com/watch?v=atgjKEgSqSU )
 •	Damage Sound: é o efeito sonoro que irá tocar quando o jogador tomar dano.
 
 
-7 - Conclusão
+# 7 - Conclusão
 
 Chegamos ao término deste projeto de desenvolvimento do nosso jogo topdown shooter para a disciplina de Técnicas de Desenvolvimento de Videojogos. Foi um percurso desafiador, mas igualmente enriquecedor. Fizemos um produto final de que nos podemos orgulhar.
 
